@@ -22,15 +22,15 @@ public void draw()
 public void keyPressed()
 {
   if (key == 'q' || key == 'Q')
-    bob.rotate(-20);
+    bob.turn(-20);
   if (key == 'e' || key == 'E')
-    bob.rotate(20);
+    bob.turn(20);
   if (key == 'd' || key == 'd')
     bob.accelerate(.5);
   if (key == 'r' || key == 'R')
     bob.warp();
   if (key == 's' || key == 'S')
-    bob.stop();
+    bob.accelerate(-.5);
   //if (key == 'w' || key == 'W')
      
 }
