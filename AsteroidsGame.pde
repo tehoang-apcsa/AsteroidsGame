@@ -13,10 +13,10 @@ public void setup()
 public void draw() 
 {
   background(0);
-  bob.show();
-  bob.move();
   for (int i = 0; i < bobb.length; i++)
     bobb[i].show();
+  bob.show();
+  bob.move();
 }//end of draw
 
 public void keyPressed()
