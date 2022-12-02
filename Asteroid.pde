@@ -9,8 +9,8 @@ class Asteroid extends Floater
   yCorners = new int [corners];
   myColor = 0;
   myRotationSpeed = (int)(Math.random()*12)-6;
-  myCenterX = 250; 
-  myCenterY = 250; //holds center coordinates   
+  myCenterX = (int)(Math.random()*501); 
+  myCenterY = (int)(Math.random()*501); //holds center coordinates   
   myXspeed = (int)(Math.random()*2)+1; 
   myYspeed = myXspeed; //holds the speed of travel in the x and y directions   
   myPointDirection = 0; //(int) (Math.random()*361)
@@ -18,12 +18,14 @@ class Asteroid extends Floater
   
   public void addPointDirection(int num) {myPointDirection += num;}
   public int getRotationSpeed(){return myRotationSpeed;}
+  public int getX(){return (int)myCenterX;}
+  public int getY(){return (int)myCenterY;}
   
   public void show()
   {
     translate((float)myCenterX, (float)myCenterY);
     noFill();
-    stroke(#696969);
+    stroke(105);
     
 beginShape();
 vertex(-4,4);//1
@@ -50,6 +52,7 @@ vertex(-12,-12);
 vertex(4,-12);
 vertex(12,-4);
 endShape();
+translate(-1*(float)myCenterX, -1*(float)myCenterY);
   }//end of show
   
   public void move()
