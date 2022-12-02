@@ -19,8 +19,9 @@ public void draw()
     bobb[i].show();
   bob.show();
   bob.move();
-  //bobber.move();
+  bobber.move();
   bobber.show();
+  bobber.addPointDirection(bobber.getRotationSpeed());
 }//end of draw
 
 public void keyPressed()
