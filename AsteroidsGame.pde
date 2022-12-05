@@ -8,7 +8,7 @@ public void setup()
   size (500,500);
   bob = new Spaceship();
   aatoird = new ArrayList <Asteroid>();
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 30; i++)
     aatoird.add(new Asteroid());
   for (int i = 0; i < bobb.length; i++)
     bobb[i] = new Star();
