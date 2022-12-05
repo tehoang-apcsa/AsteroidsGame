@@ -17,15 +17,18 @@ class Asteroid extends Floater
   }//end of contrsuctor
   
   public void addPointDirection(int num) {myPointDirection += num;}
-  public int getRotationSpeed(){return myRotationSpeed;}
+  public int getRotationSpeed(){if (myRotationSpeed == 0) return 1; else return myRotationSpeed;}
   public int getX(){return (int)myCenterX;}
   public int getY(){return (int)myCenterY;}
   
   public void show()
   {
-    translate((float)myCenterX, (float)myCenterY);
     noFill();
     stroke(105);
+ 
+    translate((float)myCenterX, (float)myCenterY);
+    float dRadians = (float)(myPointDirection*(Math.PI/180));
+    rotate(dRadians);
     
 beginShape();
 vertex(-4,4);//1
@@ -52,17 +55,7 @@ vertex(-12,-12);
 vertex(4,-12);
 vertex(12,-4);
 endShape();
+rotate(-1*dRadians);
 translate(-1*(float)myCenterX, -1*(float)myCenterY);
   }//end of show
-  
-  public void move()
-  {
-    translate((float)myCenterX, (float)myCenterY);
-    float dRadians = (float)(myPointDirection*(Math.PI/180));
-    rotate(dRadians);
-    super.move();
-    rotate(-2*dRadians);
-    translate(-1*(float)myCenterX, -1*(float)myCenterY);
-  }
-  
 }//end of asteroid
