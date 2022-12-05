@@ -1,15 +1,15 @@
 //your variable declarations here
 Spaceship bob;
 Star [] bobb = new Star[100];
-ArrayList <Asteroid> bobber;
+ArrayList <Asteroid> aatoird;
 
 public void setup() 
 {
   size (500,500);
   bob = new Spaceship();
-  bobber = new ArrayList <Asteroid>();
+  aatoird = new ArrayList <Asteroid>();
   for (int i = 0; i < 10; i++)
-    bobber.add(new Asteroid());
+    aatoird.add(new Asteroid());
   for (int i = 0; i < bobb.length; i++)
     bobb[i] = new Star();
 }
@@ -21,17 +21,17 @@ public void draw()
     bobb[i].show();
   bob.show();
   bob.move();
-  for (int i = 0; i < bobber.size(); i++)
+  for (int i = 0; i < aatoird.size(); i++)
   {
-  bobber.get(i).move();
-  bobber.get(i).show();
-  bobber.get(i).addPointDirection(bobber.get(i).getRotationSpeed());
+  aatoird.get(i).move();
+  aatoird.get(i).show();
+  aatoird.get(i).addPointDirection(aatoird.get(i).getRotationSpeed());
   }
   
-  for (int i = 0; i < bobber.size(); i++)
+  for (int i = 0; i < aatoird.size(); i++)
   {
-   if (dist(bobber.get(i).getX(), bobber.get(i).getY(), bob.getX(), bob.getY() ) < 12)
-     bobber.remove(i);
+   if (dist(aatoird.get(i).getX(), aatoird.get(i).getY(), bob.getX(), bob.getY() ) < 20)
+     aatoird.remove(i);
   }
 }//end of draw
 
