@@ -11,8 +11,8 @@ class Asteroid extends Floater
   myRotationSpeed = (int)(Math.random()*12)-6;
   myCenterX = (int)(Math.random()*501); 
   myCenterY = (int)(Math.random()*501); //holds center coordinates   
-  myXspeed = (int)(Math.random()*2)+1; 
-  myYspeed = myXspeed; //holds the speed of travel in the x and y directions   
+  myXspeed = (int)(Math.random()*3)-1; 
+  myYspeed = (int)(Math.random()*3)-1; //holds the speed of travel in the x and y directions   
   myPointDirection = 0; //(int) (Math.random()*361)
   }//end of contrsuctor
   
@@ -20,6 +20,10 @@ class Asteroid extends Floater
   public int getRotationSpeed(){if (myRotationSpeed == 0) return 1; else return myRotationSpeed;}
   public int getX(){return (int)myCenterX;}
   public int getY(){return (int)myCenterY;}
+  public void setXspd(int n){myXspeed = n;}
+  public void setYspd(int n){myYspeed = n;}
+  public double getXspd(){return myXspeed;}
+  public double getYspd(){return myYspeed;}
   
   public void show()
   {
