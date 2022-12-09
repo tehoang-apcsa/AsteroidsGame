@@ -1,5 +1,6 @@
 //your variable declarations here
 Spaceship bob;
+ArrayList <Bullet> bill;
 Star [] bobb = new Star[100];
 ArrayList <Asteroid> aatoird;
 
@@ -8,21 +9,33 @@ public void setup()
   size (500,500);
   bob = new Spaceship();
   aatoird = new ArrayList <Asteroid>();
-  for (int i = 0; i < 30; i++)
+  bill = new ArrayList <Bullet>();
+  for (int i = 0; i < 20; i++)
     aatoird.add(new Asteroid());
   for (int i = 0; i < bobb.length; i++)
     bobb[i] = new Star();
+  for (int i = 0; i < bill.size(); i++)
+    bill.add(new Bullet(bob));
 }
 
 public void draw() 
 {
   background(0);
+  for (int i = 0; i < bill.size(); i++)
+  {
+    bill.get(i).show();
+    bill.get(i).move();
+  }
   for (int i = 0; i < bobb.length; i++)
     bobb[i].show();
   bob.show();
   bob.move();
   for (int i = 0; i < aatoird.size(); i++)
   {
+    if (aatoird.get(i).getXspd() == 0)
+      aatoird.get(i).setXspd((int)(Math.random()*2));
+    if (aatoird.get(i).getYspd() == 0)
+      aatoird.get(i).setYspd((int)(Math.random()*2));
   aatoird.get(i).move();
   aatoird.get(i).show();
   aatoird.get(i).addPointDirection(aatoird.get(i).getRotationSpeed());
@@ -30,9 +43,10 @@ public void draw()
   
   for (int i = 0; i < aatoird.size(); i++)
   {
-   if (dist(aatoird.get(i).getX(), aatoird.get(i).getY(), bob.getX(), bob.getY() ) < 20)
+   if (dist(aatoird.get(i).getX(), aatoird.get(i).getY(), bob.getX(), bob.getY() ) < 30)
      aatoird.remove(i);
   }
+   
 }//end of draw
 
 public void keyPressed()
@@ -47,6 +61,7 @@ public void keyPressed()
     bob.warp();
   if (key == 's' || key == 'S')
     bob.accelerate(-.5);
-  //if (key == 'w' || key == 'W')
+  if (key == 'w' || key == 'W')
+    bill.add(new Bullet (bob));
      
 }
