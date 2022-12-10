@@ -4,10 +4,15 @@ ArrayList <Bullet> bill;
 Star [] bobb = new Star[100];
 ArrayList <Asteroid> aatoird;
 boolean alive;
+int time;
+int grace = 2;
+boolean freeze;
 
 public void setup() 
 {
   size (500,500);
+  freeze = true;
+  time = second();
   bob = new Spaceship();
   aatoird = new ArrayList <Asteroid>();
   bill = new ArrayList <Bullet>();
@@ -19,11 +24,16 @@ public void setup()
     bill.add(new Bullet(bob));
    alive = true;
   textSize(50);
+  
 }
 
 public void draw() 
 {
   background(0);
+  
+  if (second() - time > grace)
+    freeze = false;
+  
   if (alive == false)
     text("you are not alive", 60, 250);
   for (int i = 0; i < bill.size(); i++)
@@ -42,7 +52,8 @@ public void draw()
       aatoird.get(i).setXspd((int)(Math.random()*2));
     if (aatoird.get(i).getYspd() == 0)
       aatoird.get(i).setYspd((int)(Math.random()*2));
-  aatoird.get(i).move();
+    if (freeze == false)
+       aatoird.get(i).move();
   aatoird.get(i).show();
   aatoird.get(i).addPointDirection(aatoird.get(i).getRotationSpeed());
   }
