@@ -23,7 +23,7 @@ public void draw()
   background(0);
   for (int i = 0; i < bill.size(); i++)
   {
-    bill.get(i).show();
+    bill.get(i).showe();
     bill.get(i).move();
   }
   for (int i = 0; i < bobb.length; i++)
@@ -43,8 +43,16 @@ public void draw()
   
   for (int i = 0; i < aatoird.size(); i++)
   {
-   if (dist(aatoird.get(i).getX(), aatoird.get(i).getY(), bob.getX(), bob.getY() ) < 30)
-     aatoird.remove(i);
+    for (int j = 0; j < bill.size(); j++)
+    {
+       if (dist((float)aatoird.get(i).getX(), (float)aatoird.get(i).getY(), 
+       (float)bill.get(j).getX(), (float)bill.get(j).getY() ) < 22)
+          {
+          aatoird.remove(aatoird.get(i));
+          bill.remove(bill.get(j));
+          break;
+          }
+    }
   }
    
 }//end of draw
