@@ -3,7 +3,7 @@ Spaceship bob;
 ArrayList <Bullet> bill;
 Star [] bobb = new Star[100];
 ArrayList <Asteroid> aatoird;
-boolean dead;
+boolean alive;
 
 public void setup() 
 {
@@ -17,12 +17,15 @@ public void setup()
     bobb[i] = new Star();
   for (int i = 0; i < bill.size(); i++)
     bill.add(new Bullet(bob));
-   dead = false;
+   alive = true;
+  textSize(50);
 }
 
 public void draw() 
 {
   background(0);
+  if (alive == false)
+    text("you are not alive", 60, 250);
   for (int i = 0; i < bill.size(); i++)
   {
     bill.get(i).showe();
@@ -30,7 +33,7 @@ public void draw()
   }
   for (int i = 0; i < bobb.length; i++)
     bobb[i].show();
-  if (dead == false)
+  if (alive)
     bob.show();
   bob.move();
   for (int i = 0; i < aatoird.size(); i++)
@@ -47,10 +50,10 @@ public void draw()
   for (int i = 0; i < aatoird.size(); i++)
   {
     if ((dist((float)aatoird.get(i).getX(), (float)aatoird.get(i).getY(), 
-       (float)bob.getX(), (float)bob.getY() ) < 30) && dead == false)
+       (float)bob.getX(), (float)bob.getY() ) < 30) && alive)
          {
            aatoird.remove(aatoird.get(i));
-           dead = true;
+           alive = false;
          }
   }
          
@@ -59,8 +62,8 @@ public void draw()
   {
     for (int j = 0; j < bill.size(); j++)
     {
-       if ((dist((float)aatoird.get(i).getX(), (float)aatoird.get(i).getY(), 
-       (float)bill.get(j).getX(), (float)bill.get(j).getY() ) < 22) && dead == false)
+       if (dist((float)aatoird.get(i).getX(), (float)aatoird.get(i).getY(), 
+       (float)bill.get(j).getX(), (float)bill.get(j).getY() ) < 22)
           {
           aatoird.remove(aatoird.get(i));
           bill.remove(bill.get(j));
@@ -83,7 +86,7 @@ public void keyPressed()
     bob.warp();
   if (key == 's' || key == 'S')
     bob.accelerate(-.5);
-  if ((key == 'w' || key == 'W') && dead == false)
+  if ((key == 'w' || key == 'W') && alive)
     bill.add(new Bullet (bob));
      
 }
