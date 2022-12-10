@@ -1,4 +1,4 @@
-  class Bullet extends Floater 
+class Bullet extends Floater 
   {
     public Bullet(Spaceship theShip)
     {
@@ -11,6 +11,13 @@
       accelerate(6);
     }//end of constructor
     
+    public void showe()
+    {
+      fill(myColor);
+      stroke(myColor);
+      ellipse((float)myCenterX,(float)myCenterY,10,10);
+    }
+    
     public void show()
     {
       fill(myColor);
@@ -18,10 +25,6 @@
       ellipse((float)myCenterX,(float)myCenterY,10,10);
     }
     
-    public void show(int i)
-    {
-      fill(myColor);
-      stroke(myColor);
-      ellipse((float)myCenterX,(float)myCenterY,i,i);
-    }
+    public double getX(){return myCenterX;}
+    public double getY(){return myCenterY;}
   }//end of bullet class
